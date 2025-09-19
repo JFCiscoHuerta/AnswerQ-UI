@@ -25,4 +25,12 @@ export class UserService {
     return this,this.httpClient.post<RegisterUserResponse>(`${this.basePath}/auth/signup`, body, {headers: this.headers});
   }
 
+  public logout(): void {
+    localStorage.removeItem('token');
+  }
+
+  public isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
 }

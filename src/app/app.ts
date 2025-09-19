@@ -10,9 +10,6 @@ import { SignIn } from './features/user/components/sign-in/sign-in';
     RouterOutlet,
     Header,
     Footer,
-
-    //Temporal
-    SignIn
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'

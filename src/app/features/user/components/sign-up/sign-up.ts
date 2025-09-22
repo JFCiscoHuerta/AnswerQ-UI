@@ -32,7 +32,7 @@ export class SignUp {
   signUp() {
     if (this.registerUserForm?.valid) {
       this.userService.register(this.registerUserForm.value).subscribe({
-        next: () => this.router.navigate(['/home']),
+        next: () => this.router.navigate(['/user/verify-account'], { queryParams: {email: this.registerUserForm.value.email } }),
         error: (err) => console.error('Error', err)
       });
     } else {

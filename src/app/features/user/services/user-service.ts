@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { LoginUserDto } from '../models/login-user-dto';
 import { LoginResponse } from '../models/login-response';
 import { RegisterUserResponse } from '../models/register-user-response';
+import { VerifyUserDto } from '../models/verifty-user-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,11 @@ export class UserService {
     return !!localStorage.getItem('token');
   }
 
+  public verify(body: VerifyUserDto): Observable<any> {
+    return this.httpClient.post(`${this.basePath}/auth/verify`, body, { headers: this.headers });
+  }
+
+  public resend(email: string): Observable<any> {
+    return this.httpClient.post(`${this.basePath}/auth/resend?email=${email}`, {}, { headers: this.headers });
+  }
 }

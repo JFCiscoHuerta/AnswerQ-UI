@@ -33,10 +33,15 @@ export class SignIn {
     if (this.loginForm?.valid) {
       this.userService.login(this.loginForm.value).subscribe({
         next: (res: LoginResponse) => {
-          // Temporal: Change to Coockies Http-Only
+          // Temporal: Change to Cookies Http-Only
           localStorage.setItem('token', res.token);
-          // this.router.navigate(['/home']);
-          console.log('Succesfully');
+
+          if (!res.verified) {
+            this.router.navigate(['/user/verify-account'], {queryParams: {email: this.loginForm.value.email}});
+          } else {
+            this.router.navigate(['/home']);
+          }
+
         },
         error: err => {
           console.error('Error', err);

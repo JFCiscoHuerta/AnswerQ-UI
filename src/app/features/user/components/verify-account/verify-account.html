@@ -1,0 +1,17 @@
+<div>
+    <h2>Account Verification</h2>
+
+  <form [formGroup]="verifyForm" (ngSubmit)="verify()">
+
+    <label>Verification Code:</label>
+    <input type="text" formControlName="verificationCode">
+
+    <button type="submit" [disabled]="verifyForm.invalid">Verify</button>
+
+  </form>
+
+  <form (ngSubmit)="resend()">
+    <button type="submit">Resend Code Verification</button>
+  </form>
+
+</div>

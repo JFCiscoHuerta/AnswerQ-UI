@@ -55,7 +55,7 @@ export class SignIn {
           if (!res.verified) {
             this.router.navigate(['/auth/verify-account'], {queryParams: {email: this.loginForm.value.email}});
           } else {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/dashboard']);
           }
         },
         error: err => {

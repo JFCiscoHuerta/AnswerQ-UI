@@ -1,14 +1,58 @@
-<form [formGroup]="registerUserForm" (ngSubmit)="signUp()">
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <h2>Create your account</h2>
+    <p>Get started for free. No credit card needed.</p>
 
-  <label>Email</label>
-  <input type="email" formControlName="email">
+    <button mat-stroked-button color="primary" class="google-btn">
+      <mat-icon svgIcon="google"></mat-icon>
+      Continue with Google
+    </button>
 
-  <label>Username</label>
-  <input type="text" formControlName="username">
+    <div class="divider">
+      <span>OR</span>
+    </div>
 
-  <label>Password</label>
-  <input type="password" formControlName="password">
+    <form [formGroup]="registerUserForm" (ngSubmit)="signUp()">
 
-  <button type="submit" [disabled]="registerUserForm.invalid">Sign Up</button>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" required />
+      </mat-form-field>
 
-</form>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="confirmPassword" type="password" required />
+        @if (registerUserForm.hasError('passwordMismatch')) {
+          <mat-error>
+            Passwords do not match
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="registerUserForm.invalid || isLoading">
+        @if(!isLoading) {
+          <ng-container>Sign Up</ng-container>
+        } @else {
+          <ng-container>
+            <mat-progress-spinner diameter="24" mode="indeterminate" color="accent"></mat-progress-spinner>
+          </ng-container>
+        }
+      </button>
+    </form>
+
+    <p class="footer-text">
+      Already have an account? <a routerLink="/user/sign-in">Log in</a>
+    </p>
+
+  </mat-card>
+</div>

@@ -1,13 +1,13 @@
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, inject } from '@angular/core';
-import { UserService } from '../../services/user-service';
-import { VerifyUserDto } from '../../models/verifty-user-dto';
+import { VerifyUserDto } from '../../../auth/models/verifty-user-dto';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-verify-account',
@@ -24,7 +24,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class VerifyAccount {
   private formBuilder = inject(FormBuilder);
-  private userService = inject(UserService);
+  private authService = inject(AuthService);
   private router = inject(Router);
 
   verifyForm: FormGroup;
@@ -50,7 +50,7 @@ export class VerifyAccount {
       const dto: VerifyUserDto = this.verifyForm.value;
       dto.email = this.email;
 
-      this.userService.verify(dto).subscribe({
+      this.authService.verify(dto).subscribe({
         next: res => {
           this.isLoading = false;
           this.router.navigate(['/home']);
@@ -66,11 +66,11 @@ export class VerifyAccount {
   resend() {
     const email = this.verifyForm.get('email')?.value;
     if (email) {
-      this.userService.resend(email).subscribe({
+      this.authService.resend(email).subscribe({
         next: res => {
           console.log('Forwarded code');
           // Mostrar mensaje de que se verifico el correr
-          this.router.navigate(['/user/sign-in']);
+          this.router.navigate(['/auth/sign-in']);
         },
         error: err => {
           // Mostrar alerta de error

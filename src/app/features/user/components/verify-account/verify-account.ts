@@ -4,13 +4,21 @@ import { UserService } from '../../services/user-service';
 import { VerifyUserDto } from '../../models/verifty-user-dto';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-verify-account',
   imports: [
     CommonModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatProgressSpinnerModule
+],
   templateUrl: './verify-account.html',
   styleUrl: './verify-account.css'
 })
@@ -21,6 +29,7 @@ export class VerifyAccount {
 
   verifyForm: FormGroup;
   email: string;
+  isLoading = false;
 
   constructor(private route: ActivatedRoute) {
     this.verifyForm = this.formBuilder.group({
@@ -37,19 +46,17 @@ export class VerifyAccount {
 
   verify() {
     if (this.verifyForm?.valid) {
+      this.isLoading = true;
       const dto: VerifyUserDto = this.verifyForm.value;
       dto.email = this.email;
 
       this.userService.verify(dto).subscribe({
         next: res => {
-          console.log('Account successfully verified');
+          this.isLoading = false;
           this.router.navigate(['/home']);
         },
         error: err => {
-          console.log('Dto:', dto);
-          console.log('Query Email: ', this.email);
-          console.log('DTO Email Email: ', dto.email);
-          console.log('Verification Code: ', dto.verificationCode);
+          this.isLoading = false;
           console.warn('Error', err);
         }
       });
@@ -57,20 +64,20 @@ export class VerifyAccount {
   }
 
   resend() {
-    console.log('Resend Started');
     const email = this.verifyForm.get('email')?.value;
-    console.log('Email: ', email);
     if (email) {
       this.userService.resend(email).subscribe({
         next: res => {
           console.log('Forwarded code');
+          // Mostrar mensaje de que se verifico el correr
+          this.router.navigate(['/user/sign-in']);
         },
         error: err => {
+          // Mostrar alerta de error
           console.warn('Error', err);
         }
       });
     }
-    console.log('Resend Finished');
   }
 
 }

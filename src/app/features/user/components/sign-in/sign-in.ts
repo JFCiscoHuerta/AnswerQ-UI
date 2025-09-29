@@ -1,16 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/user-service';
 import { LoginResponse } from '../../models/login-response';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-sign-in',
   imports: [
     CommonModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    RouterModule,
+    MatProgressSpinnerModule
+],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.css'
 })
@@ -21,6 +34,7 @@ export class SignIn {
   private userService = inject(UserService);
 
   loginForm: FormGroup;
+  isLoading = false;
 
   constructor() {
     this.loginForm = this.formBuilder.group({
@@ -31,19 +45,21 @@ export class SignIn {
 
   signIn() {
     if (this.loginForm?.valid) {
+      this.isLoading = true;
       this.userService.login(this.loginForm.value).subscribe({
         next: (res: LoginResponse) => {
           // Temporal: Change to Cookies Http-Only
           localStorage.setItem('token', res.token);
 
+          this.isLoading = false;
           if (!res.verified) {
             this.router.navigate(['/user/verify-account'], {queryParams: {email: this.loginForm.value.email}});
           } else {
             this.router.navigate(['/home']);
           }
-
         },
         error: err => {
+          this.isLoading = false;
           console.error('Error', err);
         }
       });

@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './shared/components/header/header';
 import { Footer } from './shared/components/footer/footer';
-import { SignIn } from './features/auth/components/sign-in/sign-in';
+import { SignIn } from './features/auth/pages/sign-in/sign-in';
 
 @Component({
   selector: 'app-root',

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { UserService } from '../../../features/user/services/user-service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../features/auth/services/auth-service';
 
 @Component({
   selector: 'app-header',
@@ -14,10 +14,10 @@ import { CommonModule } from '@angular/common';
 export class Header {
 
   public router = inject(Router);
-  public userService = inject(UserService);
+  public authService = inject(AuthService);
 
   logout() {
-    this.userService.logout();
+    this.authService.logout();
     this.router.navigate(['/sign-in'])
   }
 

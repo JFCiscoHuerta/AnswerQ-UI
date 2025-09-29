@@ -1,16 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Inject, Injectable, Optional } from '@angular/core';
-import { RegisterUserDto } from '../models/register-user-dto';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginUserDto } from '../models/login-user-dto';
 import { LoginResponse } from '../models/login-response';
+import { RegisterUserDto } from '../models/register-user-dto';
+import { LoginUserDto } from '../models/login-user-dto';
 import { RegisterUserResponse } from '../models/register-user-response';
 import { VerifyUserDto } from '../models/verifty-user-dto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AuthService {
 
   protected basePath = 'http://localhost:8081';
 

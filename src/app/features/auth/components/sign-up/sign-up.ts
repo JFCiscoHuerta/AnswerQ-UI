@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { UserService } from '../../services/user-service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-sign-up',
@@ -30,7 +30,7 @@ export class SignUp {
   private formBuilder = inject(FormBuilder);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
-  private userService = inject(UserService);
+  private authService = inject(AuthService);
 
   registerUserForm: FormGroup;
   isLoading = false;
@@ -48,10 +48,10 @@ export class SignUp {
     if (this.registerUserForm?.valid) {
       this.isLoading = true;
       const { confirmPassword, ...userData } = this.registerUserForm.value;
-      this.userService.register(userData).subscribe({
+      this.authService.register(userData).subscribe({
         next: () => {
           this.isLoading = false;
-          this.router.navigate(['/user/verify-account'],
+          this.router.navigate(['/auth/verify-account'],
             { queryParams: {email: this.registerUserForm.value.email } });
       },
         error: (err) => {

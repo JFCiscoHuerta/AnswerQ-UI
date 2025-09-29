@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f6fa;
+}
+
+.auth-card {
+  width: 380px;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.google-btn {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.divider span {
+  margin: 0 10px;
+  color: #777;
+  font-size: 14px;
+}
+
+.footer-text {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.link-btn {
+  padding: 0;
+  min-width: 0;
+  background: none;
+  border: none;
+  color: #1976d2;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}

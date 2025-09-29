@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, inject } from '@angular/core';
-import { VerifyUserDto } from '../../../auth/models/verifty-user-dto';
+import { VerifyUserDto } from '../../models/verifty-user-dto';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';

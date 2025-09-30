@@ -53,7 +53,7 @@ export class VerifyAccount {
       this.authService.verify(dto).subscribe({
         next: res => {
           this.isLoading = false;
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
         },
         error: err => {
           this.isLoading = false;

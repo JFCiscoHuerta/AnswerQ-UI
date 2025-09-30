@@ -1,0 +1,41 @@
+{
+  "HEADER": {
+    "NOTIFICATIONS": "Notifications",
+    "ACCOUNT": "Compte",
+    "SETTINGS": "Paramètres",
+    "LOGOUT": "Se déconnecter"
+  },
+  "SIGNIN": {
+    "WELCOME": "Bienvenue",
+    "SUBTITLE": "Connectez-vous pour continuer",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Mot de passe",
+    "LOGIN": "Se connecter",
+    "OR": "OU",
+    "GOOGLE": "Continuer avec Google",
+    "NO_ACCOUNT": "Vous n'avez pas de compte ?",
+    "SIGNUP": "S'inscrire"
+  },
+  "SIGNUP": {
+    "WELCOME": "Créez votre compte",
+    "SUBTITLE": "Commencez gratuitement. Pas de carte de crédit requise.",
+    "USERNAME": "Nom d'utilisateur",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Mot de passe",
+    "CONFIRM_PASSWORD": "Confirmer le mot de passe",
+    "PASSWORD_MISMATCH": "Les mots de passe ne correspondent pas",
+    "SIGNUP_BUTTON": "S'inscrire",
+    "OR": "OU",
+    "GOOGLE": "Continuer avec Google",
+    "ALREADY_ACCOUNT": "Vous avez déjà un compte ?",
+    "LOGIN": "Se connecter"
+  },
+  "VERIFY": {
+    "TITLE": "Vérifiez votre compte",
+    "SUBTITLE": "Entrez le code envoyé à votre e-mail",
+    "CODE": "Code de vérification",
+    "VERIFY_BUTTON": "Vérifier",
+    "NO_CODE": "Vous n'avez pas reçu de code ?",
+    "RESEND": "Renvoyer"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "HEADER": {
+    "NOTIFICATIONS": "Notifications",
+    "ACCOUNT": "Account",
+    "SETTINGS": "Settings",
+    "LOGOUT": "Logout"
+  },
+  "SIGNIN": {
+    "WELCOME": "Welcome Back",
+    "SUBTITLE": "Sign in to continue",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "LOGIN": "Login",
+    "OR": "OR",
+    "GOOGLE": "Continue with Google",
+    "NO_ACCOUNT": "Don't have an account",
+    "SIGNUP": "Sign Up"
+  },
+  "SIGNUP": {
+    "WELCOME": "Create your account",
+    "SUBTITLE": "Get started for free. No credit card needed.",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "PASSWORD_MISMATCH": "Passwords do not match",
+    "SIGNUP_BUTTON": "Sign Up",
+    "OR": "OR",
+    "GOOGLE": "Continue with Google",
+    "ALREADY_ACCOUNT": "Already have an account?",
+    "LOGIN": "Log in"
+  },
+  "VERIFY": {
+    "TITLE": "Verify your account",
+    "SUBTITLE": "Enter the code sent to your email",
+    "CODE": "Verification Code",
+    "VERIFY_BUTTON": "Verify",
+    "NO_CODE": "Didn't receive a code?",
+    "RESEND": "Resend"
+  }
+}

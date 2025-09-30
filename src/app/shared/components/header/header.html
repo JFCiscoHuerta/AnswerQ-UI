@@ -35,14 +35,14 @@
     </mat-menu>
 
     <button mat-button [matMenuTriggerFor]="langMenu" class="lang-btn">
-      <img [src]="currentLangFlag" width="24" style="margin-right: 8px;">
-      <span> {{ currentLang.toUpperCase() }} </span>
+      <img [src]="currentLangFlag" width="30" style="margin-right: 8px;">
+      <span style="color: #fff;"> {{ currentLang.toUpperCase() }} </span>
     </button>
 
     <mat-menu #langMenu="matMenu">
       @for (lang of languages; track $index) {
         <button mat-menu-item (click)="changeLang(lang.code)">
-          <img [src]="lang.flag" width="24" style="margin-right: 8px;">
+          <img [src]="lang.flag" width="30" style="margin-right: 8px;">
           <span> {{ lang.label }} </span>
         </button>
       }

@@ -31,9 +31,9 @@ export class Header {
   public translate = inject(TranslateService);
 
   languages = [
-    { code: 'en', label: 'EN', flag: 'assets/flags/en.png' },
-    { code: 'es', label: 'ES', flag: 'assets/flags/es.png' },
-    { code: 'fr', label: 'FR', flag: 'assets/flags/fr.png' },
+    { code: 'en', label: 'EN', flag: 'https://flagcdn.com/us.svg' },
+    { code: 'es', label: 'ES', flag: 'https://flagcdn.com/mx.svg' },
+    { code: 'fr', label: 'FR', flag: 'https://flagcdn.com/fr.svg' },
   ];
 
   currentLang = this.translate.getCurrentLang() || 'en';

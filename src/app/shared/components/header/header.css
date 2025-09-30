@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #131417ea;
+  padding: 0 1rem;
+}
+
+.header .mat-icon {
+  color: #fff;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mat-menu-item mat-icon {
+  margin-right: 8px;
+}

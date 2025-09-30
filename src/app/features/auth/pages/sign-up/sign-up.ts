@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/auth-service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,7 +22,8 @@ import { AuthService } from '../../services/auth-service';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    TranslateModule
   ],
   templateUrl: './sign-up.html',
   styleUrl: './sign-up.css'
@@ -35,7 +37,7 @@ export class SignUp {
   registerUserForm: FormGroup;
   isLoading = false;
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     this.registerUserForm = this.formBuilder.group({
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/auth-service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-verify-account',
@@ -17,7 +18,8 @@ import { AuthService } from '../../services/auth-service';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    TranslateModule
 ],
   templateUrl: './verify-account.html',
   styleUrl: './verify-account.css'
@@ -31,7 +33,7 @@ export class VerifyAccount {
   email: string;
   isLoading = false;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private translate: TranslateService) {
     this.verifyForm = this.formBuilder.group({
       verificationCode: ['', Validators.required]
     });

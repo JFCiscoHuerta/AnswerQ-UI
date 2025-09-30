@@ -17,26 +17,36 @@
     <mat-menu #accountMenu="matMenu">
       <button mat-menu-item>
         <mat-icon>person</mat-icon>
-        <span>My Account</span>
+        <span>{{ 'HEADER.ACCOUNT' | translate}}</span>
       </button>
 
       <button mat-menu-item>
         <mat-icon>settings</mat-icon>
-        <span>Settings</span>
+        <span>{{ 'HEADER.SETTINGS' | translate }}</span>
       </button>
 
       @if (authService.isLoggedIn()) {
         <button mat-menu-item (click)="logout()">
           <mat-icon>logout</mat-icon>
-          <span>Log Out</span>
+          <span>{{ 'HEADER.LOGOUT' | translate}}</span>
         </button>
       }
 
-
-
     </mat-menu>
 
+    <button mat-button [matMenuTriggerFor]="langMenu" class="lang-btn">
+      <img [src]="currentLangFlag" width="24" style="margin-right: 8px;">
+      <span> {{ currentLang.toUpperCase() }} </span>
+    </button>
 
+    <mat-menu #langMenu="matMenu">
+      @for (lang of languages; track $index) {
+        <button mat-menu-item (click)="changeLang(lang.code)">
+          <img [src]="lang.flag" width="24" style="margin-right: 8px;">
+          <span> {{ lang.label }} </span>
+        </button>
+      }
+    </mat-menu>
 
   </div>
 

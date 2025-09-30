@@ -1,18 +1,18 @@
 <div class="auth-container">
   <mat-card class="auth-card">
-    <h2>Verify your account</h2>
-    <p>Enter the code sent to your email</p>
+    <h2>{{ 'VERIFY.TITLE' | translate }}</h2>
+    <p>{{ 'VERIFY.SUBTITLE' | translate }}</p>
 
     <form [formGroup]="verifyForm" (ngSubmit)="verify()">
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Verification Code</mat-label>
+        <mat-label>{{ 'VERIFY.CODE' | translate }}</mat-label>
         <input matInput formControlName="verificationCode" type="text" required>
       </mat-form-field>
 
       <button mat-raised-button color="primary" type="submit" [disabled]="verifyForm.invalid" class="full-width">
         @if(!isLoading) {
-          <ng-container>Verify</ng-container>
+          <ng-container>{{ 'VERIFY.VERIFY_BUTTON' | translate }}</ng-container>
         } @else {
           <ng-container>
             <mat-progress-spinner diameter="24" mode="indeterminate" color="accent"></mat-progress-spinner>
@@ -23,8 +23,8 @@
     </form>
 
     <p class="footer-text">
-      Didn't receive a code?
-      <Button mat-button color="primary" class="link-btn" (click)="resend()">Resend</Button>
+      {{ 'VERIFY.NO_CODE' | translate }}
+      <Button mat-button color="primary" class="link-btn" (click)="resend()">{{ 'VERIFY.RESEND' | translate }}</Button>
     </p>
 
   </mat-card>

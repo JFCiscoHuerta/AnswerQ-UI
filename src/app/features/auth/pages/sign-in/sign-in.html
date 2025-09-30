@@ -1,32 +1,32 @@
 <div class="auth-container">
   <mat-card class="auth-card">
-    <h2>Welcome back</h2>
-    <p>Sign in to continue</p>
+    <h2>{{ "SIGNIN.WELCOME" | translate }}</h2>
+    <p>{{ "SIGNIN.SUBTITLE" | translate }}</p>
 
     <button mat-stroked-button color="primary" class="google-btn">
       <mat-icon svgIcon="google"></mat-icon>
-      Continue with Google
+      {{ "SIGNIN.GOOGLE" | translate }}
     </button>
 
     <div class="divider">
-      <span>OR</span>
+      <span>{{ "SIGNIN.OR" | translate }}</span>
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="signIn()">
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Email</mat-label>
+        <mat-label>{{ 'SIGNIN.EMAIL' | translate }}</mat-label>
         <input matInput formControlName="email" type="email" required>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Password</mat-label>
+        <mat-label>{{ 'SIGNIN.PASSWORD' | translate }}</mat-label>
         <input matInput formControlName="password" type="password" required>
       </mat-form-field>
 
       <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="loginForm.invalid || isLoading">
         @if (!isLoading) {
-          <ng-container>Login</ng-container>
+          <ng-container>{{ 'SIGNIN.LOGIN' | translate }}</ng-container>
         } @else {
           <ng-container>
             <mat-progress-spinner diameter="24" mode="indeterminate" color="accent"></mat-progress-spinner>
@@ -36,7 +36,7 @@
     </form>
 
     <p class="footer-text">
-      Don't have an account? <a routerLink="/auth/sign-up">Sign Up</a>
+      {{ "SIGNIN.NO_ACCOUNT" | translate}} <a routerLink="/auth/sign-up">{{ "SIGNIN.SIGNUP" | translate}}</a>
     </p>
 
   </mat-card>

@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/auth-service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-in',
@@ -22,7 +23,8 @@ import { AuthService } from '../../services/auth-service';
     MatInputModule,
     MatButtonModule,
     RouterModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    TranslateModule
 ],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.css'
@@ -36,7 +38,7 @@ export class SignIn {
   loginForm: FormGroup;
   isLoading = false;
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]

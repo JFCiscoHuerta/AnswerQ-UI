@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthRoutingModule } from "../../../features/auth/auth-routing-module";
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { L } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +18,8 @@ import { AuthRoutingModule } from "../../../features/auth/auth-routing-module";
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    TranslateModule
 ],
   templateUrl: './header.html',
   styleUrl: './header.css'
@@ -25,6 +28,29 @@ export class Header {
 
   public router = inject(Router);
   public authService = inject(AuthService);
+  public translate = inject(TranslateService);
+
+  languages = [
+    { code: 'en', label: 'EN', flag: 'https://flagcdn.com/us.svg' },
+    { code: 'es', label: 'ES', flag: 'https://flagcdn.com/mx.svg' },
+    { code: 'fr', label: 'FR', flag: 'https://flagcdn.com/fr.svg' },
+  ];
+
+  currentLang = this.translate.getCurrentLang() || 'en';
+  currentLangFlag = this.getFlag(this.currentLang);
+
+  changeLang(lang: string) {
+    this.translate.use(lang);
+    this.currentLang = lang;
+    this.currentLangFlag = this.getFlag(lang);
+
+    localStorage.setItem('lang', lang);
+  }
+
+  private getFlag(langCode: string): string {
+    const lang = this.languages.find(l => l.code === langCode);
+    return lang ? lang.flag : '';
+  }
 
   logout() {
     this.authService.logout();

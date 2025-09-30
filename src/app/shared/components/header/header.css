@@ -31,3 +31,7 @@
 .mat-menu-item mat-icon {
   margin-right: 8px;
 }
+
+.lang-btn img {
+  vertical-align: middle;
+}

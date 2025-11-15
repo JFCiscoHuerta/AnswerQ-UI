@@ -2,13 +2,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from './../../services/user-service';
 import { Component, inject, OnInit } from '@angular/core';
-import { UserDetails } from '../../models/user-details-dto';
-import { switchMap } from 'rxjs';
 import { MatAnchor } from "@angular/material/button";
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../../auth/services/auth-service';
+import { UserDetailsDto } from '../../models/user-details-dto';
 
 @Component({
   selector: 'app-account-details',
@@ -26,10 +26,11 @@ import { MatIconModule } from '@angular/material/icon';
 export class AccountDetails implements OnInit {
 
   private userService = inject(UserService);
+  private authService = inject(AuthService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
-  user?: UserDetails;
+  user?: UserDetailsDto;
   userId?: number;
   isLoading = false;
 
@@ -45,26 +46,16 @@ export class AccountDetails implements OnInit {
 
   loadUserDetails() {
     this.isLoading = true;
-
-    this.route.paramMap.pipe(
-      switchMap( params => {
-          this.userId = Number(params.get('id'));
-          if(!this.userId) {
-            this.isLoading = false;
-            throw new Error('Invalid User Id');
-          }
-          return this.userService.userDetails(this.userId);
-        })
-    ).subscribe({
+    const userId = this.authService.getUserId();
+    if(!userId) {
+      this.isLoading = false;
+      throw new Error('Invalid User Id');
+    }
+    this.userService.userDetails(userId).subscribe({
       next: (data) => {
         this.user = data;
         this.isLoading = false;
-      },
-      error: err =>
-        {
-          console.error('Error fetching user data', err);
-          this.isLoading = false;
-        }
+      }
     })
   }
 

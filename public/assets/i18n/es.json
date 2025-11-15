@@ -37,5 +37,33 @@
     "VERIFY_BUTTON": "Verificar",
     "NO_CODE": "¿No recibiste un código?",
     "RESEND": "Reenviar"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Cambiar contraseña",
+    "SUBTITLE": "Actualiza tu contraseña para mantener segura tu cuenta.",
+    "OLD_PASSWORD": "Contraseña actual",
+    "NEW_PASSWORD": "Nueva contraseña",
+    "CONFIRM_PASSWORD": "Confirmar nueva contraseña",
+    "REQUIRED": "Este campo es obligatorio",
+    "MINLENGTH": "La contraseña debe tener al menos 6 caracteres",
+    "MISMATCH": "Las contraseñas no coinciden",
+    "SUBMIT": "Actualizar contraseña"
+  },
+  "USER_DETAILS": {
+    "TITLE": "Detalles del usuario",
+    "SUBTITLE": "Información personal y estado de tu cuenta.",
+    "USERNAME": "Nombre de usuario",
+    "FIRSTNAME": "Nombre",
+    "LASTNAME": "Apellido",
+    "BIRTHDATE": "Fecha de nacimiento",
+    "EMAIL": "Correo electrónico",
+    "GENDER": "Género",
+    "PHONE": "Teléfono",
+    "STATUS": "Estado",
+    "ENABLED": "Activo",
+    "DISABLED": "Inactivo",
+    "CHANGE_PASSWORD": "Cambiar contraseña",
+    "EDIT_PROFILE": "Editar perfil"
   }
+
 }

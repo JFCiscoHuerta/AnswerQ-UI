@@ -37,5 +37,33 @@
     "VERIFY_BUTTON": "Verify",
     "NO_CODE": "Didn't receive a code?",
     "RESEND": "Resend"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Change Password",
+    "SUBTITLE": "Update your password to keep your account secure.",
+    "OLD_PASSWORD": "Current Password",
+    "NEW_PASSWORD": "New Password",
+    "CONFIRM_PASSWORD": "Confirm New Password",
+    "REQUIRED": "This field is required",
+    "MINLENGTH": "Password must be at least 6 characters long",
+    "MISMATCH": "Passwords do not match",
+    "SUBMIT": "Update Password"
+  },
+  "USER_DETAILS": {
+    "TITLE": "User Details",
+    "SUBTITLE": "Personal information and account status.",
+    "USERNAME": "Username",
+    "FIRSTNAME": "First Name",
+    "LASTNAME": "Last Name",
+    "BIRTHDATE": "Birthdate",
+    "EMAIL": "Email",
+    "GENDER": "Gender",
+    "PHONE": "Phone",
+    "STATUS": "Status",
+    "ENABLED": "Active",
+    "DISABLED": "Inactive",
+    "CHANGE_PASSWORD": "Change Password",
+    "EDIT_PROFILE": "Edit Profile"
   }
+
 }

@@ -8,7 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthRoutingModule } from "../../../features/auth/auth-routing-module";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { L } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-header',

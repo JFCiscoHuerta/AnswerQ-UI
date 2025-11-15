@@ -41,4 +41,34 @@ export class AuthService {
   public resend(email: string): Observable<any> {
     return this.httpClient.post(`${this.basePath}/auth/resend?email=${email}`, {}, { headers: this.headers });
   }
+
+  getUserId(): number{
+    const token = localStorage.getItem('token');
+
+    if (!token || token.trim() === '') {
+      throw new Error('Token not found');
+    }
+
+    const base64Url = token.split('.')[1];
+    if(!base64Url) {
+      throw new Error('Invalid token structure');
+    }
+
+    const base64 = base64Url.replace('/-/g', '+');
+
+    let payload: any;
+
+    try {
+      payload = JSON.parse(atob(base64));
+    } catch (e) {
+      throw new Error('Invalid token encoding');
+    }
+
+    if(!payload.id) {
+      throw new Error('Token payload does not contain id');
+    }
+
+    return payload.id;
+  }
+
 }

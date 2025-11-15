@@ -1,10 +1,9 @@
-import { I } from '@angular/cdk/keycodes';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseUserDto } from '../models/response-user-dto';
 import { Observable } from 'rxjs';
 import { EmailUpdateDto } from '../models/email-update-dto';
 import { PasswordUpdateDto } from '../models/password-update-dto';
+import { UserDetailsDto } from '../models/user-details-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +16,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public userDetails(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.basePath}/v1/users/user-details/${id}`, {headers: this.headers});
+  public userDetails(id: number): Observable<UserDetailsDto> {
+    return this.httpClient.get<UserDetailsDto>(`${this.basePath}/v1/users/user-details/${id}`, {headers: this.headers});
   }
 
   public changeEmail(id: number, body: EmailUpdateDto): Observable<any> {

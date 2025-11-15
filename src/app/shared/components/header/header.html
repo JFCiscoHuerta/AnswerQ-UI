@@ -25,7 +25,7 @@
         <span>{{ 'HEADER.SETTINGS' | translate }}</span>
       </button>
 
-      @if (authService.isLoggedIn()) {
+      @if (authService.isAuthenticated()) {
         <button mat-menu-item (click)="logout()">
           <mat-icon>logout</mat-icon>
           <span>{{ 'HEADER.LOGOUT' | translate}}</span>

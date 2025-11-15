@@ -30,10 +30,6 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  public isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
-  }
-
   public verify(body: VerifyUserDto): Observable<any> {
     return this.httpClient.post(`${this.basePath}/auth/verify`, body, { headers: this.headers });
   }
@@ -42,33 +38,52 @@ export class AuthService {
     return this.httpClient.post(`${this.basePath}/auth/resend?email=${email}`, {}, { headers: this.headers });
   }
 
-  getUserId(): number{
+  public getUserId(): number{
     const token = localStorage.getItem('token');
 
     if (!token || token.trim() === '') {
       throw new Error('Token not found');
     }
 
-    const base64Url = token.split('.')[1];
-    if(!base64Url) {
-      throw new Error('Invalid token structure');
-    }
-
-    const base64 = base64Url.replace('/-/g', '+');
-
-    let payload: any;
-
-    try {
-      payload = JSON.parse(atob(base64));
-    } catch (e) {
-      throw new Error('Invalid token encoding');
-    }
+    const payload = this.decodeToken(token);
 
     if(!payload.id) {
       throw new Error('Token payload does not contain id');
     }
 
     return payload.id;
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+
+    if (!token) return false;
+
+    const payload = this.decodeToken(token);
+    if (!payload) return false;
+
+    const now = Math.floor(Date.now() / 1000);
+    if (!payload.exp || payload.exp < now) return false;
+
+    return true;
+  }
+
+  private decodeToken(token: string): any | null {
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) return null;
+
+      let base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+
+      while (base64.length % 4 !== 0) {
+        base64 += '=';
+      }
+
+      const json = atob(base64);
+      return JSON.parse(json);
+    } catch (e) {
+      return null;
+    }
   }
 
 }

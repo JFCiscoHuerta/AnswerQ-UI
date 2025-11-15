@@ -37,5 +37,33 @@
     "VERIFY_BUTTON": "Vérifier",
     "NO_CODE": "Vous n'avez pas reçu de code ?",
     "RESEND": "Renvoyer"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Changer le mot de passe",
+    "SUBTITLE": "Mettez à jour votre mot de passe pour sécuriser votre compte.",
+    "OLD_PASSWORD": "Mot de passe actuel",
+    "NEW_PASSWORD": "Nouveau mot de passe",
+    "CONFIRM_PASSWORD": "Confirmer le nouveau mot de passe",
+    "REQUIRED": "Ce champ est obligatoire",
+    "MINLENGTH": "Le mot de passe doit contenir au moins 6 caractères",
+    "MISMATCH": "Les mots de passe ne correspondent pas",
+    "SUBMIT": "Mettre à jour le mot de passe"
+  },
+  "USER_DETAILS": {
+    "TITLE": "Détails de l'utilisateur",
+    "SUBTITLE": "Informations personnelles et état du compte.",
+    "USERNAME": "Nom d'utilisateur",
+    "FIRSTNAME": "Prénom",
+    "LASTNAME": "Nom",
+    "BIRTHDATE": "Date de naissance",
+    "EMAIL": "E-mail",
+    "GENDER": "Sexe",
+    "PHONE": "Téléphone",
+    "STATUS": "Statut",
+    "ENABLED": "Actif",
+    "DISABLED": "Inactif",
+    "CHANGE_PASSWORD": "Changer le mot de passe",
+    "EDIT_PROFILE": "Modifier le profil"
   }
+
 }

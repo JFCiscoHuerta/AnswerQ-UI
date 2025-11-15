@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   public register(body: RegisterUserDto): Observable<RegisterUserResponse> {
-    return this,this.httpClient.post<RegisterUserResponse>(`${this.basePath}/auth/signup`, body, {headers: this.headers});
+    return this.httpClient.post<RegisterUserResponse>(`${this.basePath}/auth/signup`, body, {headers: this.headers});
   }
 
   public logout(): void {

@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/auth-service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-verify-account',
@@ -18,6 +19,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
     MatProgressSpinnerModule,
     TranslateModule
 ],
@@ -32,6 +34,7 @@ export class VerifyAccount {
   verifyForm: FormGroup;
   email: string;
   isLoading = false;
+  errorMessage: string | null = null;
 
   constructor(private route: ActivatedRoute, private translate: TranslateService) {
     this.verifyForm = this.formBuilder.group({
@@ -59,7 +62,11 @@ export class VerifyAccount {
         },
         error: err => {
           this.isLoading = false;
-          console.warn('Error', err);
+
+          if (err.error && err.error.message) {
+            this.errorMessage = err.error.message;
+          }
+
         }
       });
     }

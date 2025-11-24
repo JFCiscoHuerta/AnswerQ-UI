@@ -24,7 +24,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatButtonModule,
     RouterModule,
     MatProgressSpinnerModule,
-    TranslateModule
+    TranslateModule,
 ],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.css'
@@ -37,6 +37,7 @@ export class SignIn {
 
   loginForm: FormGroup;
   isLoading = false;
+  errorMessage: string | null = null;
 
   constructor(private translate: TranslateService) {
     this.loginForm = this.formBuilder.group({
@@ -62,7 +63,10 @@ export class SignIn {
         },
         error: err => {
           this.isLoading = false;
-          console.error('Error', err);
+
+          if (err.error && err.error.message) {
+            this.errorMessage = err.error.message;
+          }
         }
       });
     } else {

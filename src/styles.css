@@ -62,3 +62,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   cursor: pointer;
   font-size: 14px;
 }
+
+.error-box {
+  margin-top: 16px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+  color: #c62828;
+  border-radius: 8px;
+}

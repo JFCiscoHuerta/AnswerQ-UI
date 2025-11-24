@@ -50,6 +50,13 @@
       </button>
     </form>
 
+    @if (errorMessage) {
+      <mat-card class="error-box">
+        <mat-icon class="warn">error</mat-icon>
+        <span>{{ errorMessage }}</span>
+      </mat-card>
+    }
+
     <p class="footer-text">
       {{ 'SIGNUP.ALREADY_ACCOUNT' | translate }} <a routerLink="/auth/sign-in">{{ 'SIGNUP.LOGIN' | translate}}</a>
     </p>

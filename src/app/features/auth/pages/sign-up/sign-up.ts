@@ -36,6 +36,7 @@ export class SignUp {
 
   registerUserForm: FormGroup;
   isLoading = false;
+  errorMessage: string | null = null;
 
   constructor(private translate: TranslateService) {
     this.registerUserForm = this.formBuilder.group({
@@ -57,12 +58,13 @@ export class SignUp {
             { queryParams: {email: this.registerUserForm.value.email } });
       },
         error: (err) => {
-          this.isLoading = true;
-          console.error('Error', err)
+          this.isLoading = false;
+
+          if (err.error && err.error.message) {
+            this.errorMessage = err.error.message;
+          }
         }
       });
-    } else {
-      console.warn('Invalid Form');
     }
   }
 

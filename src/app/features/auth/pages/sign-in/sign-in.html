@@ -35,6 +35,13 @@
       </button>
     </form>
 
+    @if (errorMessage) {
+      <mat-card class="error-box">
+        <mat-icon color="warn">error</mat-icon>
+        <span>{{ errorMessage }}</span>
+      </mat-card>
+    }
+
     <p class="footer-text">
       {{ "SIGNIN.NO_ACCOUNT" | translate}} <a routerLink="/auth/sign-up">{{ "SIGNIN.SIGNUP" | translate}}</a>
     </p>

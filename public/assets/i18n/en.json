@@ -64,6 +64,13 @@
     "DISABLED": "Inactive",
     "CHANGE_PASSWORD": "Change Password",
     "EDIT_PROFILE": "Edit Profile"
+  },
+  "FORMS": {
+    "TITLE": "Forms",
+    "NEW": "New",
+    "NAME": "Name",
+    "ENABLED": "Enabled",
+    "ACTIONS": "Actions"
   }
 
 }
